@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dinamicki elementi</title>
+    <style>
+        .popup{
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: rgba(0,0,0,0.6);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .popup_content {
+            background-color: white;
+            padding: 1rem;
+            position: relative;
+        }
+        .close{
+            position: absolute;
+            top: -0.5rem;
+            right: -0.5rem;
+        }
+    </style>
+</head>
+<body>
+    
+   <!-- <p>Staticki paragraf</p>
+    <button>Kreiraj dugme</button>
+    <script>
+      /*  function klikni() {alert ("Kliknuto");}
+
+        const button_dugme = document.createElement("button")
+        button_dugme.innerHTML = "Klikni"
+        button_dugme.style.backgroundColor = "pink"
+        button_dugme.onclick = klikni
+
+        document.body.prepend(button_dugme)
+            </script>
+*/-->
+<button id="prikazi">Prikazi</button>
+<script>
+        let div_popup = null
+        const button_prikazi = document.querySelector ("#prikazi")
+
+            function close_popup(){
+                div_popup.remove()
+                div_popup = null
+            }
+    
+            
+            function prikazi_popup() {
+                div_popup = document.createElement ("div")
+                div_popup.classList.add("popup")
+                div_popup.style.width = window.innerWidth +"px"
+                div_popup.style.height = window.innerHeight + "px"
+
+                const div_content = document.createElement("div")
+                div_content.classList.add ("popup_content")
+                div_content.innerHTML = `
+                <h3>Naslov popup</h3>
+                <p>Ovo je poruka koju ima pop-up </p>
+                `;
+
+                const button_close = document.createElement("button")
+                button_close.classList.add("close")
+                button_close.innerHTML = "&times;"
+                button_close.onclick = close_popup
+
+
+                div_popup.append(div_content)
+                div_content.append(button_close)
+                document.body.append(div_popup)            
+            }
+
+            button_prikazi.onclick = prikazi_popup
+
+</script>
+
+
+
+
+</body>
+</html>
